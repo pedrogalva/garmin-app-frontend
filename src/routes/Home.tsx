@@ -20,7 +20,6 @@ const users = [
     first_name: "Jane",
     last_name: "Doe",
     email: "pero@pero.com",
-
     birthday: "01/01/2000",
   },
 ];
