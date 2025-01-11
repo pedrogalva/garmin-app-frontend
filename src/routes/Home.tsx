@@ -1,9 +1,11 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 import "./App.css";
+import useAxios from "axios-hooks";
 
 import UsersTable from "../components/user/UsersTable.tsx";
 import Header from "../components/header/index.tsx";
+import { filledButtonSx } from "../components/_style/button.tsx";
 
 const users = [
   {
@@ -24,6 +26,10 @@ const users = [
 ];
 
 const App = () => {
+  const [{ data, loading, error }, refetch] = useAxios(
+    "https://reqres.in/api/users?delay=1"
+  );
+
   return (
     <Box sx={{ maxWidth: 800, margin: "80px auto" }} component="section">
       <Header
@@ -32,6 +38,9 @@ const App = () => {
           "Esse app tem como finalidade atualizar os treinos criados pela boradentro do site da Garmin"
         }
       />
+      <Button variant="contained" sx={filledButtonSx} onClick={() => {}}>
+        CADASTRAR USUÁRIO
+      </Button>
       <UsersTable users={users} />
     </Box>
   );
